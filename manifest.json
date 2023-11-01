@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bootstrap Deprecated Classes Extension",
+  "version": "0.1.0",
+  "description": "Browser extension highlighting Bootstrap deprecated classes in websites",
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "matches": ["*://*/*"]
+  }],
+  "action": {
+    "default_title": "Bootstrap Deprecated Classes Extension",
+    "default_popup": "popup/choose_bootstrap_version.html"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "activeTab"
+  ]
+}

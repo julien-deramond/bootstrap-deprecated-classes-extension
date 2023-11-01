@@ -1,0 +1,8 @@
+.hidden {
+  display: none;
+}
+
+#popup-content {
+  display: flex;
+  flex-direction: column;
+}

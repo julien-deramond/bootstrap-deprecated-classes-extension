@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "node script/build.mjs"
+  },
+  "devDependencies": {
+    "fast-array-diff": "^1.1.0",
+    "list-selectors": "^2.0.1",
+    "web-ext": "^7.8.0"
+  }
+}

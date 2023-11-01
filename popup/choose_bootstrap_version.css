@@ -1,3 +1,7 @@
+html, body {
+  width: max-content;
+}
+
 .hidden {
   display: none;
 }
@@ -5,4 +9,5 @@
 #popup-content {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }

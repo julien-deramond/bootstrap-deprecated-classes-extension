@@ -20,7 +20,6 @@
     "default_popup": "popup/choose_bootstrap_version.html"
   },
   "permissions": [
-    "tabs",
     "scripting",
     "activeTab"
   ]

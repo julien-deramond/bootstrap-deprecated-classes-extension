@@ -11,10 +11,6 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "content_scripts": [{
-    "css": ["styles.css"],
-    "matches": ["*://*/*"]
-  }],
   "action": {
     "default_title": "Bootstrap Deprecated Classes Extension",
     "default_popup": "popup/choose_bootstrap_version.html"

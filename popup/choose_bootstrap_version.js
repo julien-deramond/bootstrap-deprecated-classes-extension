@@ -11,12 +11,20 @@ function switchFunction() {
 async function highlightDeprecatedClasses(tabs, param) {
   for (const tab of tabs) {
     try {
+      await chrome.scripting.insertCSS({
+        files: ["/styles.css"],
+        target: {
+          tabId: tab.id,
+          allFrames: true,
+        }
+      });
+
       await chrome.scripting.executeScript({
         target: {
           tabId: tab.id,
           allFrames: true,
         },
-        func: (param) => {
+        func: async (param) => {
           const extensionAvailableClasses = [
             "bootstrap-browser-extension-bs-4",
             "bootstrap-browser-extension-bs-3",

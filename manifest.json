@@ -3,6 +3,14 @@
   "name": "Bootstrap Deprecated Classes Extension",
   "version": "0.1.0",
   "description": "Browser extension highlighting Bootstrap deprecated classes in websites",
+  "author": "juderamond@gmail.com",
+  "homepage_url": "https://github.com/julien-deramond/bootstrap-deprecated-classes-extension",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "content_scripts": [{
     "css": ["styles.css"],
     "matches": ["*://*/*"]

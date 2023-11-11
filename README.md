@@ -25,7 +25,7 @@ You can install the extension directly from [Firefox Add-ons](https://addons.moz
 
 ### Locally
 
-You can run it locally:
+For Firefox, you can run it locally:
 
 * `web-ext run --devtools` to launch the extension in Firefox with DevTools.
 * `web-ext run -u https://getbootstrap.com/docs/4.6` to launch the extension in Firefox with the Bootstrap 4 docs

@@ -21,8 +21,6 @@ A browser extension highlighting [Bootstrap](https://getbootstrap.com/) deprecat
 
 You can install the extension directly from [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/bootstrap-deprecated-classes/), [Chrome Web Store](https://chromewebstore.google.com/detail/bootstrap-deprecated-clas/cfkfbhnancjclhapldjkpllagfjpdihc), or [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/bootstrap-deprecated-clas/gldcnbcldiippdmakcdppaglkaofoobi).
 
-:warning: This extension is not yet available on the Chrome Web Store.
-
 ### Locally
 
 First, run `npm run build` to build the `dist` folder containing all the extension files.

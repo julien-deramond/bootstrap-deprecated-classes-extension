@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-deprecated-classes-extension",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Browser extension highlighting Bootstrap deprecated classes in websites",
   "homepage": "https://github.com/julien-deramond/bootstrap-deprecated-classes-extension#readme",
@@ -12,7 +12,12 @@
     "url": "git+https://github.com/julien-deramond/bootstrap-deprecated-classes-extension.git"
   },
   "license": "MIT",
-  "author": "Julien Déramond",
+  "author": {
+    "name": "Julien Déramond",
+    "email": "juderamond@gmail.com",
+    "url": "https://github.com/julien-deramond/"
+  },
+  "funding": "https://github.com/sponsors/julien-deramond/",
   "scripts": {
     "build": "npm run build:chrome && npm run build:edge && npm run build:firefox",
     "build:chrome": "node build-extension.mjs chrome",

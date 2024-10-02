@@ -1,6 +1,7 @@
 import * as fs from 'fs/promises';
 import * as diff from 'fast-array-diff';
 import { getCSSClasses } from './getCSSClasses.mjs';
+import { outputFile, remove } from 'fs-extra';
 
 const minimumBootstrapVersion = 3
 const maximumBootstrapVersion = 5
@@ -32,24 +33,55 @@ for (const version of bootstrapVersions.slice(0, -1)) {
   await fs.writeFile(outputFilePath, JSON.stringify(outputJSONContent))
 }
 
+// Generate ./data/bootstrap-${version}-deprecated-classes.json` manually for the latest version
+const lastestVersionOutputFilePath = `./data/bootstrap-${maximumBootstrapVersion}-deprecated-classes.json`
+await fs.writeFile(lastestVersionOutputFilePath, JSON.stringify({
+  deprecated: [
+    ".carousel-dark",
+    ".navbar-dark",
+    ".dropdown-menu-dark"
+  ] 
+}))
+
 // Generate CSS file from `data/bootstrap-${version}-deprecated-classes.json` files
 const generatedCSSFile = "./styles.css"
 console.log(`Generating ${generatedCSSFile}...`)
 await fs.writeFile(generatedCSSFile, "")
-for (const version of bootstrapVersions.slice(0, -1)) {
+for (const version of bootstrapVersions) {
   await fs.appendFile(generatedCSSFile, `.bootstrap-browser-extension-bs-${version} {`)
 
-  const deprecatedClasses = JSON.parse(await fs.readFile(`data/bootstrap-${version}-deprecated-classes.json`)).removed
-  for (const deprecatedClass of deprecatedClasses) {
+  const removedClasses = JSON.parse(await fs.readFile(`data/bootstrap-${version}-deprecated-classes.json`)).removed ?? []
+  for (const removedClass of removedClasses) {
     await fs.appendFile(generatedCSSFile,
   `
-  ${deprecatedClass} {
+  ${removedClass} {
     border: 5px solid red;
     border-radius: 0;
 
     &::before {
       color: #000;
       background-color: rgb(189, 127, 127);
+      padding: 2px;
+      border: 2px solid black;
+      z-index: 10000;
+      content: '${removedClass}'
+    }
+  }
+  `
+    )
+  }
+
+  const deprecatedClasses = JSON.parse(await fs.readFile(`data/bootstrap-${version}-deprecated-classes.json`)).deprecated ?? []
+  for (const deprecatedClass of deprecatedClasses) {
+    await fs.appendFile(generatedCSSFile,
+  `
+  ${deprecatedClass} {
+    border: 5px solid yellow;
+    border-radius: 0;
+
+    &::before {
+      color: #000;
+      background-color: rgb(214, 202, 71);
       padding: 2px;
       border: 2px solid black;
       z-index: 10000;

@@ -14756,3 +14756,46 @@
     }
   }
   }
+.bootstrap-browser-extension-bs-5 {
+  .carousel-dark {
+    border: 5px solid yellow;
+    border-radius: 0;
+
+    &::before {
+      color: #000;
+      background-color: rgb(214, 202, 71);
+      padding: 2px;
+      border: 2px solid black;
+      z-index: 10000;
+      content: '.carousel-dark'
+    }
+  }
+  
+  .navbar-dark {
+    border: 5px solid yellow;
+    border-radius: 0;
+
+    &::before {
+      color: #000;
+      background-color: rgb(214, 202, 71);
+      padding: 2px;
+      border: 2px solid black;
+      z-index: 10000;
+      content: '.navbar-dark'
+    }
+  }
+  
+  .dropdown-menu-dark {
+    border: 5px solid yellow;
+    border-radius: 0;
+
+    &::before {
+      color: #000;
+      background-color: rgb(214, 202, 71);
+      padding: 2px;
+      border: 2px solid black;
+      z-index: 10000;
+      content: '.dropdown-menu-dark'
+    }
+  }
+  }

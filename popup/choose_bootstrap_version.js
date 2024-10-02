@@ -1,11 +1,18 @@
-// TODO: handle the "reset" button
-/* document.querySelectorAll("button").forEach((button) => {
-  button.addEventListener("click", switchFunction);
-}); */
+document.querySelectorAll('button[type="reset"]').forEach((button) => {
+  button.addEventListener("click", reset);
+});
 
 document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
   checkbox.addEventListener("change", switchFunction);
 });
+
+function reset() {
+  document.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.checked = false;
+    const event = new Event('change');
+    checkbox.dispatchEvent(event);
+  });
+}
 
 function switchFunction() {
   chrome.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
@@ -30,14 +37,7 @@ async function highlightDeprecatedClasses(tabs, paramRef, paramChecked) {
           allFrames: true,
         },
         func: async (paramRef, paramChecked) => {
-          const extensionAvailableClasses = [
-            "bootstrap-browser-extension-bs-4",
-            "bootstrap-browser-extension-bs-3",
-          ];
-
-          console.log(paramRef + '-' + paramChecked);
-
-          // document.body.classList.remove(...extensionAvailableClasses);
+          console.log('----------', paramRef)
 
           switch(paramRef) {
             case "bs3":
@@ -52,6 +52,13 @@ async function highlightDeprecatedClasses(tabs, paramRef, paramChecked) {
                 document.body.classList.add("bootstrap-browser-extension-bs-4");
               } else {
                 document.body.classList.remove("bootstrap-browser-extension-bs-4");
+              }
+              break;
+            case "bs5":
+              if (paramChecked) {
+                document.body.classList.add("bootstrap-browser-extension-bs-5");
+              } else {
+                document.body.classList.remove("bootstrap-browser-extension-bs-5");
               }
               break;
           }

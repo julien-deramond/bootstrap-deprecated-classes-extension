@@ -37,8 +37,6 @@ async function highlightDeprecatedClasses(tabs, paramRef, paramChecked) {
           allFrames: true,
         },
         func: async (paramRef, paramChecked) => {
-          console.log('----------', paramRef)
-
           switch(paramRef) {
             case "bs3":
               if (paramChecked) {

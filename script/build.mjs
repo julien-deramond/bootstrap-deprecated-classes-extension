@@ -39,8 +39,11 @@ await fs.writeFile(latestVersionOutputFilePath, JSON.stringify({
   deprecated: [
     ".btn-close-white",
     ".carousel-dark",
+    ".dropdown-menu-dark",
     ".navbar-dark",
-    ".dropdown-menu-dark"
+    ".text-black-50",
+    ".text-muted",
+    ".text-white-50",
   ] 
 }))
 

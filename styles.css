@@ -14813,6 +14813,20 @@
     }
   }
   
+  .navbar-light {
+    border: 5px solid yellow;
+    border-radius: 0;
+
+    &::before {
+      color: #000;
+      background-color: rgb(214, 202, 71);
+      padding: 2px;
+      border: 2px solid black;
+      z-index: 10000;
+      content: '.navbar-light'
+    }
+  }
+  
   .text-black-50 {
     border: 5px solid yellow;
     border-radius: 0;

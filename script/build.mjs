@@ -41,6 +41,7 @@ await fs.writeFile(latestVersionOutputFilePath, JSON.stringify({
     ".carousel-dark",
     ".dropdown-menu-dark",
     ".navbar-dark",
+    ".navbar-light",
     ".text-black-50",
     ".text-muted",
     ".text-white-50",

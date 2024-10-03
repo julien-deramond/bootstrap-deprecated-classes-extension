@@ -37,6 +37,7 @@ for (const version of bootstrapVersions.slice(0, -1)) {
 const latestVersionOutputFilePath = `./data/bootstrap-${maximumBootstrapVersion}-deprecated-classes.json`
 await fs.writeFile(latestVersionOutputFilePath, JSON.stringify({
   deprecated: [
+    ".btn-close-white",
     ".carousel-dark",
     ".navbar-dark",
     ".dropdown-menu-dark"

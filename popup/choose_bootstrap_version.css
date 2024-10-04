@@ -1,4 +1,5 @@
 html, body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   width: max-content;
 }
 
@@ -10,4 +11,16 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+label span {
+  opacity: 0.75;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+    background-color: #212529;
+    color: #fff;
+  }
 }

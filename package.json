@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-deprecated-classes-extension",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "Browser extension highlighting Bootstrap deprecated classes in websites",
   "homepage": "https://github.com/julien-deramond/bootstrap-deprecated-classes-extension#readme",

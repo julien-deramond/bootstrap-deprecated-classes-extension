@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Bootstrap Deprecated Classes Extension",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Browser extension highlighting Bootstrap deprecated classes in websites",
   "author": "juderamond@gmail.com",
   "homepage_url": "https://github.com/julien-deramond/bootstrap-deprecated-classes-extension",

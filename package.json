@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "fast-array-diff": "^1.1.0",
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.3",
     "list-selectors": "^2.0.1",
     "web-ext": "^9.2.0"
   }

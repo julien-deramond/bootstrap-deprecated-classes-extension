@@ -29,6 +29,6 @@
     "fast-array-diff": "^1.1.0",
     "fs-extra": "^11.3.6",
     "list-selectors": "^2.0.1",
-    "web-ext": "^10.5.0"
+    "web-ext": "^10.6.0"
   }
 }

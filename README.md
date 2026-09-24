@@ -1,19 +1,13 @@
-<div align="center">
-  <h1>Bootstrap Deprecated Classes Extension</h1>
-  <p>Highlight Bootstrap deprecated classes.</p>
-  <p>
-    <a href="images/bootstrap-deprecated-classes-extension.png" title="Screenshot of the Bootstrap Deprecated Classes Extension">
-      <img alt="Screenshot of the Bootstrap Deprecated Classes Extension" src="images/bootstrap-deprecated-classes-extension.png" width="800" />
-    </a>
-  </p>
-</div>
+<p align="center"><picture><source srcset=".github/header.svg" type="image/svg+xml"><img src=".github/header.png" width="830" alt="Bootstrap Deprecated Classes: A browser extension that highlights deprecated Bootstrap classes."></picture></p>
 
-<div align="center">
-  <a href="https://github.com/julien-deramond/bootstrap-deprecated-classes-extension/blob/main/LICENSE">
-    <img alt="License" src="https://badgen.net/github/license/julien-deramond/bootstrap-deprecated-classes-extension"/>
+[![Firefox Add-ons](https://img.shields.io/amo/v/bootstrap-deprecated-classes?style=flat&label=firefox&labelColor=16181E&color=3AB9BF)](https://addons.mozilla.org/firefox/addon/bootstrap-deprecated-classes/)
+[![License: MIT](https://img.shields.io/github/license/julien-deramond/bootstrap-deprecated-classes-extension?style=flat&labelColor=16181E&color=2D7579)](https://github.com/julien-deramond/bootstrap-deprecated-classes-extension/blob/main/LICENSE)
+
+<p align="center">
+  <a href="images/bootstrap-deprecated-classes-extension.png" title="Screenshot of the Bootstrap Deprecated Classes Extension">
+    <img alt="Screenshot of the Bootstrap Deprecated Classes Extension" src="images/bootstrap-deprecated-classes-extension.png" width="800" />
   </a>
-  <br/><br/>
-</div>
+</p>
 
 A browser extension highlighting [Bootstrap](https://getbootstrap.com/) deprecated classes in websites.
 

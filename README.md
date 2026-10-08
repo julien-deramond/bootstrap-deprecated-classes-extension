@@ -1,6 +1,15 @@
+<h1 align="center"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/logo-title-dark.svg"><source media="(prefers-color-scheme: light)" srcset=".github/logo-title-light.svg"><img src=".github/logo-title-light.png" width="830" alt="Bootstrap Deprecated Classes Extension"></picture></h1>
+
 <div align="center">
-  <h1>Bootstrap Deprecated Classes Extension</h1>
   <p>Highlight Bootstrap deprecated classes.</p>
+  <p>
+    <a href="#installation"><strong>Install the extension »</strong></a>
+    <br>
+    <br>
+    <a href="#installation">Installation</a>
+    ·
+    <a href="https://github.com/julien-deramond/bootstrap-deprecated-classes-extension/issues/new">Report a bug</a>
+  </p>
   <p>
     <a href="images/bootstrap-deprecated-classes-extension.png" title="Screenshot of the Bootstrap Deprecated Classes Extension">
       <img alt="Screenshot of the Bootstrap Deprecated Classes Extension" src="images/bootstrap-deprecated-classes-extension.png" width="800" />

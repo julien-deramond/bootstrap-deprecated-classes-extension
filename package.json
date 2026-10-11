@@ -28,7 +28,8 @@
   "devDependencies": {
     "fast-array-diff": "^1.1.0",
     "fs-extra": "^11.4.1",
-    "list-selectors": "^2.0.1",
+    "postcss": "^8.5.28",
+    "postcss-selector-parser": "^7.1.6",
     "web-ext": "^10.7.0"
   }
 }

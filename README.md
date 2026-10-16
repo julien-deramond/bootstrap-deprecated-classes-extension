@@ -11,8 +11,8 @@
     <a href="https://github.com/julien-deramond/bootstrap-deprecated-classes-extension/issues/new">Report a bug</a>
   </p>
   <p>
-    <a href="images/bootstrap-deprecated-classes-extension.png" title="Screenshot of the Bootstrap Deprecated Classes Extension">
-      <img alt="Screenshot of the Bootstrap Deprecated Classes Extension" src="images/bootstrap-deprecated-classes-extension.png" width="800" />
+    <a href="images/bootstrap-4-to-5.png" title="Screenshot of the Bootstrap Deprecated Classes Extension">
+      <img alt="Screenshot of the Bootstrap Deprecated Classes Extension" src="images/bootstrap-4-to-5.png" width="800" />
     </a>
   </p>
 </div>

@@ -22,7 +22,7 @@ fs.ensureDirSync(distPath);
 
 fs.copySync(path.join(__dirname, "icons"), distPath + "/icons");
 fs.copySync(path.join(__dirname, "popup"), distPath + "/popup");
-fs.copySync(path.join(__dirname, "styles.css"), distPath + "/styles.css");
+fs.copySync(path.join(__dirname, "data"), distPath + "/data");
 
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 const browserManifest = JSON.parse(

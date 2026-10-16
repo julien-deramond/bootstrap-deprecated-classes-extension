@@ -6,25 +6,30 @@
     <title>Choose Bootstrap Version</title>
   </head>
   <body>
-    <div id="popup-content">
-      <div>
-        <input type="checkbox" id="bs3" name="bs3" />
-        <label for="bs3">Bootstrap 3</label>
+    <form id="popup-content">
+      <div class="field">
+        <label for="from">Your site uses</label>
+        <select id="from" name="from"></select>
+        <small id="detected" class="hint hidden"></small>
       </div>
-      <div>
-        <input type="checkbox" id="bs4" name="bs4" />
-        <label for="bs4">Bootstrap 4</label>
+      <div class="field">
+        <label for="to">Migrating to</label>
+        <select id="to" name="to"></select>
       </div>
-      <div>
-        <input type="checkbox" id="bs5" name="bs5" />
-        <label for="bs5">Bootstrap 5<br><span>(removed in Bootstrap 6)</span></label>
+      <ul class="legend">
+        <li><span class="swatch swatch-removed"></span>Removed in the target version</li>
+        <li><span class="swatch swatch-deprecated"></span>Deprecated in the target version</li>
+      </ul>
+      <div class="actions">
+        <button type="submit" id="highlight">Highlight</button>
+        <button type="button" id="clear" disabled>Clear</button>
       </div>
-      <button type="reset">Reset</button>
-    </div>
+      <p id="status" class="hint" role="status"></p>
+    </form>
     <div id="error-content" class="hidden">
       <p>Can't run this extension on this web page.</p>
       <p>Try a different page.</p>
     </div>
-    <script src="choose_bootstrap_version.js"></script>
+    <script type="module" src="choose_bootstrap_version.js"></script>
   </body>
 </html>

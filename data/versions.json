@@ -1,0 +1,37 @@
+{
+  "versions": [
+    {
+      "major": 3,
+      "version": "3.4.1",
+      "prerelease": false,
+      "deprecated": []
+    },
+    {
+      "major": 4,
+      "version": "4.6.2",
+      "prerelease": false,
+      "deprecated": []
+    },
+    {
+      "major": 5,
+      "version": "5.3.8",
+      "prerelease": false,
+      "deprecated": [
+        ".btn-close-white",
+        ".carousel-dark",
+        ".dropdown-menu-dark",
+        ".navbar-dark",
+        ".navbar-light",
+        ".text-black-50",
+        ".text-muted",
+        ".text-white-50"
+      ]
+    },
+    {
+      "major": 6,
+      "version": "6.0.0-alpha.1",
+      "prerelease": true,
+      "deprecated": []
+    }
+  ]
+}

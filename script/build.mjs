@@ -1,101 +1,54 @@
 import * as fs from 'fs/promises';
-import * as diff from 'fast-array-diff';
 import { getCSSClasses } from './getCSSClasses.mjs';
-import { outputFile, remove } from 'fs-extra';
 
-const minimumBootstrapVersion = 3
-const maximumBootstrapVersion = 5
-const bootstrapVersions = Array.from({ length: maximumBootstrapVersion - minimumBootstrapVersion + 1 }, (_, i) => i + minimumBootstrapVersion)
+// Bootstrap versions available in the extension. `specifier` is resolved to an exact version on npm;
+// pin pre-releases explicitly since `6` doesn't resolve to a pre-release version.
+// `deprecated` lists the classes that still work in this version but will be removed in the next major one.
+// They can't be detected automatically, so they're maintained manually here.
+const bootstrapVersions = [
+  { major: 3, specifier: '3', deprecated: [] },
+  { major: 4, specifier: '4', deprecated: [] },
+  {
+    major: 5,
+    specifier: '5',
+    deprecated: [
+      '.btn-close-white',
+      '.carousel-dark',
+      '.dropdown-menu-dark',
+      '.navbar-dark',
+      '.navbar-light',
+      '.text-black-50',
+      '.text-muted',
+      '.text-white-50',
+    ],
+  },
+  { major: 6, specifier: '6.0.0-alpha.1', deprecated: [] },
+]
 
-// Get Bootstrap classes by version and store them in `./data/bootstrap-${version}.json` files
+async function resolveVersion(specifier) {
+  const url = `https://data.jsdelivr.com/v1/packages/npm/bootstrap/resolved?specifier=${specifier}`
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw new Error(`Failed to resolve bootstrap@${specifier}: ${response.status} ${response.statusText}`)
+  }
+  return (await response.json()).version
+}
+
+// Get Bootstrap classes by version and store them in `./data/bootstrap-${major}.json` files
 console.log("Getting Bootstrap classes...")
-for (const version of bootstrapVersions) {
+const versions = []
+for (const { major, specifier, deprecated } of bootstrapVersions) {
+  const version = await resolveVersion(specifier)
   const bootstrapCssPath = `https://cdn.jsdelivr.net/npm/bootstrap@${version}/dist/css/bootstrap.css`
   console.log(`...${bootstrapCssPath}`)
 
   const versionClasses = await getCSSClasses(bootstrapCssPath)
+  await fs.writeFile(`./data/bootstrap-${major}.json`, JSON.stringify(versionClasses))
 
-  const outputFilePath = `./data/bootstrap-${version}.json`
-  await fs.writeFile(outputFilePath, JSON.stringify(versionClasses));
+  versions.push({ major, version, prerelease: version.includes('-'), deprecated })
 }
 
-// Generate ./data/bootstrap-${version}-deprecated-classes.json` files by comparing each version to the last one
-console.log("Comparing Bootstrap classes...")
-for (const version of bootstrapVersions.slice(0, -1)) {
-  console.log(`...comparing Bootstrap ${version} to Bootstrap ${maximumBootstrapVersion}`)
-
-  const outputJSONContent = diff.diff(
-    JSON.parse(await fs.readFile(`./data/bootstrap-${version}.json`)).classes,
-    JSON.parse(await fs.readFile(`./data/bootstrap-${maximumBootstrapVersion}.json`)).classes
-  )
-
-  const outputFilePath = `./data/bootstrap-${version}-deprecated-classes.json`
-  await fs.writeFile(outputFilePath, JSON.stringify(outputJSONContent))
-}
-
-// Generate ./data/bootstrap-${version}-deprecated-classes.json` manually for the latest version
-const latestVersionOutputFilePath = `./data/bootstrap-${maximumBootstrapVersion}-deprecated-classes.json`
-await fs.writeFile(latestVersionOutputFilePath, JSON.stringify({
-  deprecated: [
-    ".btn-close-white",
-    ".carousel-dark",
-    ".dropdown-menu-dark",
-    ".navbar-dark",
-    ".navbar-light",
-    ".text-black-50",
-    ".text-muted",
-    ".text-white-50",
-  ] 
-}))
-
-// Generate CSS file from `data/bootstrap-${version}-deprecated-classes.json` files
-const generatedCSSFile = "./styles.css"
-console.log(`Generating ${generatedCSSFile}...`)
-await fs.writeFile(generatedCSSFile, "")
-for (const version of bootstrapVersions) {
-  await fs.appendFile(generatedCSSFile, `.bootstrap-browser-extension-bs-${version} {`)
-
-  const removedClasses = JSON.parse(await fs.readFile(`data/bootstrap-${version}-deprecated-classes.json`)).removed ?? []
-  for (const removedClass of removedClasses) {
-    await fs.appendFile(generatedCSSFile,
-  `
-  ${removedClass} {
-    border: 5px solid red;
-    border-radius: 0;
-
-    &::before {
-      color: #000;
-      background-color: rgb(189, 127, 127);
-      padding: 2px;
-      border: 2px solid black;
-      z-index: 10000;
-      content: '${removedClass}'
-    }
-  }
-  `
-    )
-  }
-
-  const deprecatedClasses = JSON.parse(await fs.readFile(`data/bootstrap-${version}-deprecated-classes.json`)).deprecated ?? []
-  for (const deprecatedClass of deprecatedClasses) {
-    await fs.appendFile(generatedCSSFile,
-  `
-  ${deprecatedClass} {
-    border: 5px solid yellow;
-    border-radius: 0;
-
-    &::before {
-      color: #000;
-      background-color: rgb(214, 202, 71);
-      padding: 2px;
-      border: 2px solid black;
-      z-index: 10000;
-      content: '${deprecatedClass}'
-    }
-  }
-  `
-    )
-  }
-
-  await fs.appendFile(generatedCSSFile, "}\n")
-}
+// Store the versions metadata used by the extension to compare two versions
+const versionsFilePath = './data/versions.json'
+console.log(`Generating ${versionsFilePath}...`)
+await fs.writeFile(versionsFilePath, JSON.stringify({ versions }, null, 2) + '\n')
